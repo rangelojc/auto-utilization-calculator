@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const metaStore = createSlice({
+export const slice = createSlice({
     name: 'meta',
     initialState: {
         year: 0,
@@ -15,7 +15,7 @@ export const metaStore = createSlice({
     },
     reducers: {
         setYear: (state, { payload }) => {
-            state.year = payload
+            state.year = payload * 1
         },
         setMake: (state, { payload }) => {
             state.make = payload
@@ -24,13 +24,13 @@ export const metaStore = createSlice({
             state.model = payload
         },
         setPurchasePrice: (state, { payload }) => {
-            state.purchasePrice = payload
+            state.purchasePrice = payload * 1
         },
         setPurchaseOdo: (state, { payload }) => {
-            state.purchaseOdo = payload
+            state.purchaseOdo = payload * 1
         },
         setCurrentOdo: (state, { payload }) => {
-            state.currentOdo = payload
+            state.currentOdo = payload * 1
 
             if (state.purchaseOdo) {
                 const dff = payload - state.purchaseOdo;
@@ -41,6 +41,6 @@ export const metaStore = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice } = metaStore.actions
+export const { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice } = slice.actions
 
-export default metaStore.reducer
+export default slice.reducer

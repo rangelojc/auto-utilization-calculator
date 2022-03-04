@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux'
+import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux';
 
-import { Form, FormField, FormRow, FormInput, FormLabel } from "./components";
+import { numberWithCommas } from "../../utils/utils.js"
+
+import { Form, FormField, FormRow, FormInput, FormLabel } from "../components";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -16,11 +19,19 @@ const Wrapper = styled.div`
 
 function BasicReport() {
 
+    const [perMileageCost, setPerMileageCost] = useState(0);
+
     //redux
     const purchasePrice = useSelector(state => state.meta.purchasePrice)
     const purchaseDate = useSelector(state => state.meta.purchaseDate)
     const currentDate = useSelector(state => state.meta.currentDate)
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
+
+    //effect
+    useEffect(() => {
+        const output = purchasePrice / milesTraveled;
+        if (!isNaN(output)) setPerMileageCost(output.toFixed(2));
+    }, [purchasePrice, milesTraveled]);
 
     //functions
 
@@ -34,7 +45,7 @@ function BasicReport() {
                         <FormLabel>Total Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={purchasePrice} />
+                        <FormInput className="result-field align-right" readOnly value={numberWithCommas(purchasePrice)} />
                     </FormField>
                 </FormRow>
                 <FormRow>
@@ -58,7 +69,7 @@ function BasicReport() {
                         <FormLabel>Per Mileage Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={purchasePrice / milesTraveled} />
+                        <FormInput className="result-field align-right" readOnly value={perMileageCost} />
                     </FormField>
                 </FormRow>
             </Form>

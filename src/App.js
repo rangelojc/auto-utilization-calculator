@@ -2,8 +2,12 @@ import './css/App.css';
 
 import styled from "styled-components";
 
-import MetaForm from "./components/meta-form";
-import BasicReport from "./components/basic-report"
+import MetaForm from "./components/forms/meta";
+import FuelForm from "./components/forms/fuel";
+import BasicReport from "./components/reports/basic";
+import PurchaseReport from "./components/reports/purchase";
+import FuelReport from "./components/reports/fuel";
+
 import { Wrapper } from './components/components';
 
 const Body = styled.div`
@@ -45,12 +49,18 @@ function App() {
           <CalculationCol>
             <h3>Properties</h3>
             <MetaForm />
+            <FuelForm />
+
           </CalculationCol>
 
           <ReportCol>
             <h3>Reports</h3>
             <br></br>
             <BasicReport />
+            <br></br>
+            <PurchaseReport />
+            <br></br>
+            <FuelReport />
           </ReportCol>
 
         </Body>

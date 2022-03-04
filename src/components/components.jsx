@@ -83,7 +83,7 @@ export const FormInput = styled.input`
     border-radius: 5px;
     outline: 0px;
     padding: 0 12px;
-    font-size: 12px;
+    font-size: 14px;
 
     color: var(--white);
     font-weight: 500;
@@ -105,6 +105,7 @@ export const FormInput = styled.input`
     &[readOnly]{
         pointer-events: none;
         background: none;
+        padding: 0;
     }
 `;
 

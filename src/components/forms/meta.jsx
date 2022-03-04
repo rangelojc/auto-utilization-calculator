@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Form, FormField, FormRow, FormInput, FormLabel, FormHR } from "./components";
+import { Form, FormField, FormRow, FormInput, FormLabel, FormHR } from "../components";
 
-import { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice } from '../store/metaReducer.js'
+import { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice } from '../../store/metaReducer.js'
 
 const FormWrapper = styled.div`
     width: 80%;
@@ -70,13 +70,6 @@ function MetaForm() {
                         <FormLabel>Current Odometer Reading</FormLabel>
                         <FormInput type="number" placeholder={0} onChange={v => dispatch(setCurrentOdo(v.target.value))} />
                     </FormField>
-                </FormRow>
-                <FormRow>
-                    <FormField className="form-field">
-                        <FormLabel>Miles traveled since purchase</FormLabel>
-                        <FormInput readOnly value={milesTraveled} />
-                    </FormField>
-                    <FormField className="form-field"></FormField>
                 </FormRow>
             </Form>
         </FormWrapper>
