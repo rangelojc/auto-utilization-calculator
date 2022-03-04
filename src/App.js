@@ -9,6 +9,7 @@ import PurchaseReport from "./components/reports/purchase";
 import FuelReport from "./components/reports/fuel";
 
 import { Wrapper } from './components/components';
+import SummaryReport from './components/reports/summary';
 
 const Body = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ function App() {
     <div className="App">
       <Wrapper>
         <h2>Automotive Utilization Calculator</h2>
-        <p>Calculate expenses of your car based on its purchase, maintenance and fuel prices.</p>
+        <p>Calculate expenses of your car based on its overall costs.</p>
 
         <Body>
           <CalculationCol>
@@ -61,6 +62,8 @@ function App() {
             <PurchaseReport />
             <br></br>
             <FuelReport />
+            <br></br>
+            <SummaryReport />
           </ReportCol>
 
         </Body>

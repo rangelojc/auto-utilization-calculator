@@ -19,31 +19,24 @@ const Wrapper = styled.div`
     }
 `
 
-function FuelReport() {
+function SummaryReport() {
 
     //redux
     const estCostPer = useSelector(state => state.fuel.estCostPer)
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
+    const purchasePrice = useSelector(state => state.meta.purchasePrice)
 
     //functions
     return (
         <Wrapper>
             <Form>
-                <h4>Fuel Utilization</h4>
+                <h4>Summary</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Estimated Fuel Cost per km</FormLabel>
+                        <FormLabel>Total Cost:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={estCostPer.toFixed(2)} />
-                    </FormField>
-                </FormRow>
-                <FormRow className="form-row">
-                    <FormField className="form-field label-only">
-                        <FormLabel>Total Fuel Cost</FormLabel>
-                    </FormField>
-                    <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas((estCostPer * milesTraveled).toFixed(2))} />
+                        <FormInput className="result-field align-right" readOnly value={numberWithCommas((estCostPer * milesTraveled) + purchasePrice)} />
                     </FormField>
                 </FormRow>
             </Form>
@@ -51,4 +44,4 @@ function FuelReport() {
     );
 }
 
-export default FuelReport;
+export default SummaryReport;

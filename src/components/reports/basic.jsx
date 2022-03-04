@@ -15,6 +15,10 @@ const Wrapper = styled.div`
     .result-field{
         font-size: 16px;
     }
+
+    .form-row{
+        margin: 0;
+    }
 `
 
 function BasicReport() {
@@ -39,7 +43,7 @@ function BasicReport() {
         <Wrapper>
             <Form>
                 <h4>Basic Report {carInfo ? "- " + carInfo : ""}</h4>
-                < FormRow >
+                <FormRow className="form-row">
                     <FormField className="form-field label-only">
                         <FormLabel>Miles traveled since purchase</FormLabel>
                     </FormField>

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import moment from "moment"
 
 export const slice = createSlice({
     name: 'meta',
@@ -23,11 +24,19 @@ export const slice = createSlice({
         setModel: (state, { payload }) => {
             state.model = payload
         },
+        setPurchaseDate: (state, { payload }) => {
+            state.purchaseDate = payload
+        },
         setPurchasePrice: (state, { payload }) => {
             state.purchasePrice = payload * 1
         },
         setPurchaseOdo: (state, { payload }) => {
             state.purchaseOdo = payload * 1
+
+            if (state.currentOdo) {
+                const dff = state.currentOdo - payload;
+                state.milesTraveled = dff > 0 ? dff : 0;
+            }
         },
         setCurrentOdo: (state, { payload }) => {
             state.currentOdo = payload * 1
@@ -36,11 +45,14 @@ export const slice = createSlice({
                 const dff = payload - state.purchaseOdo;
                 state.milesTraveled = dff > 0 ? dff : 0;
             }
-        }
+        },
+        setCurrentDate: (state, { payload }) => {
+            state.currentDate = payload
+        },
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice } = slice.actions
+export const { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice, setPurchaseDate, setCurrentDate } = slice.actions
 
 export default slice.reducer

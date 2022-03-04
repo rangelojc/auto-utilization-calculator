@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux'
+import moment from "moment"
 
 import { Form, FormField, FormRow, FormInput, FormLabel, FormHR } from "../components";
 
-import { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice } from '../../store/metaReducer.js'
+import { setYear, setMake, setModel, setPurchaseOdo, setPurchaseDate, setCurrentOdo, setPurchasePrice, setCurrentDate } from '../../store/metaReducer.js'
 
 const FormWrapper = styled.div`
     width: 80%;
@@ -14,6 +15,8 @@ function MetaForm() {
 
     //redux
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
+    const currentDate = useSelector(state => state.meta.currentDate)
+    const purchaseDate = useSelector(state => state.meta.purchaseDate)
 
     return (
         <FormWrapper>
@@ -34,21 +37,19 @@ function MetaForm() {
                         <FormInput placeholder="" onChange={v => dispatch(setModel(v.target.value))} />
                     </FormField>
                 </FormRow>
-
                 <FormHR />
-                <h4>Purchase Information</h4>
 
+                <h4>Purchase Information</h4>
                 <FormRow>
                     <FormField className="form-field">
                         <FormLabel>Purchase Date</FormLabel>
-                        <FormInput placeholder="YYYY/MM/DD" />
+                        <FormInput type="date" onChange={v => dispatch(setPurchaseDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Odometer Reading</FormLabel>
                         <FormInput placeholder="0" onChange={v => dispatch(setPurchaseOdo(v.target.value))} />
                     </FormField>
                 </FormRow>
-
                 <FormRow>
                     <FormField className="form-field">
                         <FormLabel>Price Purchased</FormLabel>
@@ -57,20 +58,21 @@ function MetaForm() {
                     <FormField className="form-field">
                     </FormField>
                 </FormRow>
-
                 <FormHR />
-                <h4>Current Information</h4>
 
+                <h4>Current Information</h4>
                 <FormRow>
                     <FormField className="form-field">
                         <FormLabel>Current Date of Ownership</FormLabel>
-                        <FormInput placeholder="YYYY/MM/DD" />
+                        <FormInput type="date" value={currentDate || moment().format("YYYY-MM-DD")} onChange={v => dispatch(setCurrentDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Current Odometer Reading</FormLabel>
                         <FormInput type="number" placeholder={0} onChange={v => dispatch(setCurrentOdo(v.target.value))} />
                     </FormField>
                 </FormRow>
+                <FormHR />
+
             </Form>
         </FormWrapper>
     );
