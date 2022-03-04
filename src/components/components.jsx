@@ -7,10 +7,6 @@ export const Wrapper = styled.div`
     width: 100%;
     padding: 0 12px;
     margin: 0 auto;
-
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
 `;
 
 export const Section = styled.section`

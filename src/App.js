@@ -6,6 +6,13 @@ import MetaForm from "./components/meta-form";
 import BasicReport from "./components/basic-report"
 import { Wrapper } from './components/components';
 
+const Body = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  width: 100%;
+`
+
 const Columns = styled.div`
   h2{
     margin-bottom: 10px;
@@ -31,19 +38,25 @@ function App() {
   return (
     <div className="App">
       <Wrapper>
+        <h2>Automotive Utilization Calculator</h2>
+        <p>Calculate expenses of your car based on its purchase, maintenance and fuel prices.</p>
 
-        <CalculationCol>
-          <h3>Properties</h3>
-          <MetaForm />
-        </CalculationCol>
+        <Body>
+          <CalculationCol>
+            <h3>Properties</h3>
+            <MetaForm />
+          </CalculationCol>
 
-        <ReportCol>
-          <h3>Reports</h3>
-          <br></br>
-          <BasicReport />
-        </ReportCol>
+          <ReportCol>
+            <h3>Reports</h3>
+            <br></br>
+            <BasicReport />
+          </ReportCol>
 
+        </Body>
       </Wrapper>
+
+
     </div>
   );
 }
