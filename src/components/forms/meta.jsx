@@ -30,11 +30,11 @@ function MetaForm() {
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Make</FormLabel>
-                        <FormInput placeholder="" onChange={v => dispatch(setMake(v.target.value))} />
+                        <FormInput type="text" placeholder="" onChange={v => dispatch(setMake(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Model</FormLabel>
-                        <FormInput placeholder="" onChange={v => dispatch(setModel(v.target.value))} />
+                        <FormInput type="text" placeholder="" onChange={v => dispatch(setModel(v.target.value))} />
                     </FormField>
                 </FormRow>
                 <FormHR />
@@ -47,13 +47,13 @@ function MetaForm() {
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Odometer Reading</FormLabel>
-                        <FormInput placeholder="0" onChange={v => dispatch(setPurchaseOdo(v.target.value))} />
+                        <FormInput type="number" placeholder="0" onChange={v => dispatch(setPurchaseOdo(v.target.value))} />
                     </FormField>
                 </FormRow>
                 <FormRow>
                     <FormField className="form-field">
                         <FormLabel>Price Purchased</FormLabel>
-                        <FormInput placeholder="0.00" onChange={v => dispatch(setPurchasePrice(v.target.value))} />
+                        <FormInput type="number" placeholder="0.00" onChange={v => dispatch(setPurchasePrice(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
                     </FormField>
