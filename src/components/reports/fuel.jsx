@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 function FuelReport() {
 
     //redux
+    const consumption = useSelector(state => state.fuel.consumption)
     const estCostPer = useSelector(state => state.fuel.estCostPer)
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
 
@@ -33,13 +34,21 @@ function FuelReport() {
     return (
         <Wrapper>
             <Form>
-                <h4>Fuel Expenses Estimation</h4>
+                <h4>Fuel Estimation</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
                         <FormLabel>Fuel Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={currency + " " + estCostPer.toFixed(2) + ` /${distanceUnit}`} />
+                    </FormField>
+                </FormRow>
+                <FormRow className="form-row">
+                    <FormField className="form-field label-only">
+                        <FormLabel>Fuel Consumed</FormLabel>
+                    </FormField>
+                    <FormField className="form-field">
+                        <FormInput className="result-field align-right" readOnly value={numberWithCommas((milesTraveled / consumption).toFixed(2)) + ` ${fuelUnit}`} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">

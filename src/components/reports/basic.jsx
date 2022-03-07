@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux';
+import moment from "moment";
 
 import { numberWithCommas } from "../../utils/utils.js"
 
@@ -23,7 +24,9 @@ const Wrapper = styled.div`
 
 function BasicReport() {
 
-    const [perMileageCost, setPerMileageCost] = useState(0);
+    const [daysOwned, setDaysOwned] = useState(0);
+    const [monthsOwned, setMonthsOwned] = useState(0);
+
 
     //redux
     const purchasePrice = useSelector(state => state.meta.purchasePrice)
@@ -39,12 +42,40 @@ function BasicReport() {
     const distanceUnit = useSelector(state => state.config.distanceUnit)
 
     //effect
+    useEffect(() => {
+        const a = moment(purchaseDate);
+        const b = currentDate ? moment(currentDate) : moment();
+        const dailyDiff = b.diff(a, 'days');
+        const monthlyDiff = b.diff(a, 'months');
+
+        if (!isNaN(dailyDiff)) setDaysOwned(dailyDiff);
+        if (!isNaN(monthlyDiff)) setMonthsOwned(monthlyDiff);
+
+
+    }, [purchasePrice, purchaseDate, currentDate]);
+
 
     //functions
     return (
         <Wrapper>
             <Form>
                 <h4>{carInfo ? carInfo : "Basic Report "}</h4>
+                <FormRow className="form-row">
+                    <FormField className="form-field label-only">
+                        <FormLabel># of days owned</FormLabel>
+                    </FormField>
+                    <FormField className="form-field">
+                        <FormInput className="result-field align-right" readOnly value={daysOwned} />
+                    </FormField>
+                </FormRow>
+                <FormRow className="form-row">
+                    <FormField className="form-field label-only">
+                        <FormLabel># of months owned</FormLabel>
+                    </FormField>
+                    <FormField className="form-field">
+                        <FormInput className="result-field align-right" readOnly value={monthsOwned} />
+                    </FormField>
+                </FormRow>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
                         <FormLabel>Distance traveled since purchase</FormLabel>

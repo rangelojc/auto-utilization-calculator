@@ -23,14 +23,14 @@ function FuelForm() {
 
                 <FormRow>
                     <FormField className="form-field">
-                        <FormLabel>Est. Fuel Consumption</FormLabel>
+                        <FormLabel>Fuel Consumption</FormLabel>
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder="0" onChange={v => dispatch(setConsumption(v.target.value))} />
                             <FormUnit>{`${distanceUnit}/${fuelUnit}`}</FormUnit>
                         </FormField>
                     </FormField>
                     <FormField className="form-field">
-                        <FormLabel>Est. Fuel Cost</FormLabel>
+                        <FormLabel>Fuel Cost</FormLabel>
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder="0" onChange={v => dispatch(setCostPer(v.target.value))} />
                             <FormUnit>{currency + "/" + fuelUnit}</FormUnit>
