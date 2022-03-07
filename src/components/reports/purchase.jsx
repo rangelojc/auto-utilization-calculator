@@ -34,6 +34,10 @@ function BasicReport() {
     const currentDate = useSelector(state => state.meta.currentDate)
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
 
+    const currency = useSelector(state => state.config.currency)
+    const distanceUnit = useSelector(state => state.config.distanceUnit)
+    const fuelUnit = useSelector(state => state.config.fuelUnit)
+
     //effect
     useEffect(() => {
         const output = purchasePrice / milesTraveled;
@@ -70,7 +74,7 @@ function BasicReport() {
                         <FormLabel>Daily Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas(dailyCost)} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(dailyCost)} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
@@ -78,20 +82,20 @@ function BasicReport() {
                         <FormLabel>Monthly Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas(monthlyCost)} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(monthlyCost)} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Per Mileage Cost</FormLabel>
+                        <FormLabel>Cost Per Distance</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={perMileageCost} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + perMileageCost + ` /${distanceUnit}`} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Total Cost</FormLabel>
+                        <FormLabel>Total Cost As Purchased</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={numberWithCommas(purchasePrice)} />

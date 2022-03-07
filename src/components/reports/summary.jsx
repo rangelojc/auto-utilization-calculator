@@ -26,6 +26,8 @@ function SummaryReport() {
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
     const purchasePrice = useSelector(state => state.meta.purchasePrice)
 
+    const currency = useSelector(state => state.config.currency)
+
     //functions
     return (
         <Wrapper>
@@ -36,7 +38,7 @@ function SummaryReport() {
                         <FormLabel>Total Cost:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas((estCostPer * milesTraveled) + purchasePrice)} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(((estCostPer * milesTraveled) + purchasePrice).toFixed(2))} />
                     </FormField>
                 </FormRow>
             </Form>

@@ -5,6 +5,7 @@ export const slice = createSlice({
     initialState: {
         distanceUnit: "km",
         fuelUnit: "L",
+        currency: "₱"
     },
     reducers: {
         setDistanceUnit: (state, { payload }) => {

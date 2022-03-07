@@ -36,19 +36,21 @@ function BasicReport() {
         else return `${state.meta.year} ${state.meta.make} ${state.meta.model}`
     })
 
+    const distanceUnit = useSelector(state => state.config.distanceUnit)
+
     //effect
 
     //functions
     return (
         <Wrapper>
             <Form>
-                <h4>Basic Report {carInfo ? "- " + carInfo : ""}</h4>
+                <h4>{carInfo ? carInfo : "Basic Report "}</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Miles traveled since purchase</FormLabel>
+                        <FormLabel>Distance traveled since purchase</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas(milesTraveled)} />
+                        <FormInput className="result-field align-right" readOnly value={numberWithCommas(milesTraveled) + " " + distanceUnit} />
                     </FormField>
                 </FormRow>
             </Form>

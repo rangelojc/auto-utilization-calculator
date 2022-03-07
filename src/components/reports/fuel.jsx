@@ -25,6 +25,10 @@ function FuelReport() {
     const estCostPer = useSelector(state => state.fuel.estCostPer)
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
 
+    const currency = useSelector(state => state.config.currency)
+    const distanceUnit = useSelector(state => state.config.distanceUnit)
+    const fuelUnit = useSelector(state => state.config.fuelUnit)
+
     //functions
     return (
         <Wrapper>
@@ -32,10 +36,10 @@ function FuelReport() {
                 <h4>Fuel Utilization</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Estimated Fuel Cost per km</FormLabel>
+                        <FormLabel>Estimated Fuel Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={estCostPer.toFixed(2)} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + estCostPer.toFixed(2) + ` /${distanceUnit}`} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
@@ -43,7 +47,7 @@ function FuelReport() {
                         <FormLabel>Total Fuel Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas((estCostPer * milesTraveled).toFixed(2))} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((estCostPer * milesTraveled).toFixed(2))} />
                     </FormField>
                 </FormRow>
             </Form>

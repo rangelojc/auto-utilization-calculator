@@ -3,7 +3,7 @@ import styled from 'styled-components';
 //Layout
 export const Wrapper = styled.div`
     height: inherit;
-    max-width: 1390px;
+    max-width: 1180px;
     width: 100%;
     padding: 0 12px;
     margin: 0 auto;
@@ -155,8 +155,11 @@ export const FormSelect = styled.select`
     }
 `;
 
-export const FormSpan = styled.span`
-    color: var(--white);
+export const FormUnit = styled.span`
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    font-size: 12px;
 `
 
 export const FormHR = styled.div`

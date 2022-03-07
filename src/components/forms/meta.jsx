@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux'
 import moment from "moment"
 
-import { Form, FormField, FormRow, FormInput, FormLabel, FormHR } from "../components";
+import { Form, FormField, FormRow, FormInput, FormLabel, FormHR, FormUnit } from "../components";
 
 import { setYear, setMake, setModel, setPurchaseOdo, setPurchaseDate, setCurrentOdo, setPurchasePrice, setCurrentDate } from '../../store/metaReducer.js'
 
 const FormWrapper = styled.div`
-    width: 80%;
 `
 
 function MetaForm() {
@@ -17,6 +16,10 @@ function MetaForm() {
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
     const currentDate = useSelector(state => state.meta.currentDate)
     const purchaseDate = useSelector(state => state.meta.purchaseDate)
+
+    const distanceUnit = useSelector(state => state.config.distanceUnit)
+    const fuelUnit = useSelector(state => state.config.fuelUnit)
+    const currency = useSelector(state => state.config.currency)
 
     return (
         <FormWrapper>
@@ -47,13 +50,21 @@ function MetaForm() {
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Odometer Reading</FormLabel>
-                        <FormInput type="number" placeholder="0" onChange={v => dispatch(setPurchaseOdo(v.target.value))} />
+
+                        <FormField className="form-field pos-rel">
+                            <FormInput type="number" placeholder="0" onChange={v => dispatch(setPurchaseOdo(v.target.value))} />
+                            <FormUnit>{distanceUnit}</FormUnit>
+                        </FormField>
                     </FormField>
                 </FormRow>
                 <FormRow>
                     <FormField className="form-field">
                         <FormLabel>Price Purchased</FormLabel>
-                        <FormInput type="number" placeholder="0.00" onChange={v => dispatch(setPurchasePrice(v.target.value))} />
+
+                        <FormField className="form-field pos-rel">
+                            <FormInput type="number" placeholder="0.00" onChange={v => dispatch(setPurchasePrice(v.target.value))} />
+                            <FormUnit>{currency}</FormUnit>
+                        </FormField>
                     </FormField>
                     <FormField className="form-field">
                     </FormField>
@@ -68,7 +79,10 @@ function MetaForm() {
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel>Current Odometer Reading</FormLabel>
-                        <FormInput type="number" placeholder={0} onChange={v => dispatch(setCurrentOdo(v.target.value))} />
+                        <FormField className="form-field pos-rel">
+                            <FormInput type="number" placeholder={0} onChange={v => dispatch(setCurrentOdo(v.target.value))} />
+                            <FormUnit>{distanceUnit}</FormUnit>
+                        </FormField>
                     </FormField>
                 </FormRow>
                 <FormHR />
