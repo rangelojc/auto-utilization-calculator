@@ -48,14 +48,11 @@ function App() {
 
         <Body>
           <CalculationCol>
-            <h3>Properties</h3>
             <MetaForm />
             <FuelForm />
-
           </CalculationCol>
 
           <ReportCol>
-            <h3>Reports</h3>
             <br></br>
             <BasicReport />
             <br></br>
