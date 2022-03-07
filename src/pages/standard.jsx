@@ -83,7 +83,7 @@ function StandardPage() {
   return (
     <Wrapper>
       <h2 style={{ color: "#ba68c8" }}>Automotive Utilization Calculator</h2>
-      <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its overall costs.</p>
+      <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its purchase price and fuel costs.</p>
 
       <Body>
         <CalculationCol>
