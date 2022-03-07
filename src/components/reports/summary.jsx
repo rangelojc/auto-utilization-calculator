@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react"
 import { numberWithCommas } from "../../utils/utils.js"
+import moment from "moment";
 
 import { Form, FormField, FormRow, FormInput, FormLabel } from "../components";
 
@@ -20,13 +22,42 @@ const Wrapper = styled.div`
 `
 
 function SummaryReport() {
+    const [grandTotal, setGrandTotal] = useState(0)
+    const [monthlyCost, setMonthlyCost] = useState(0);
 
     //redux
     const estCostPer = useSelector(state => state.fuel.estCostPer)
+
+    const purchaseDate = useSelector(state => state.meta.purchaseDate)
+    const currentDate = useSelector(state => state.meta.currentDate)
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
     const purchasePrice = useSelector(state => state.meta.purchasePrice)
 
+    const insuranceLegalExpenses = useSelector(state => state.itemizedExpenses.insuranceLegalExpenses)
+    const serviceExpenses = useSelector(state => state.itemizedExpenses.serviceExpenses)
+
     const currency = useSelector(state => state.config.currency)
+
+    useEffect(() => {
+        setGrandTotal(
+            (estCostPer * milesTraveled)
+            + purchasePrice
+            + insuranceLegalExpenses
+            + serviceExpenses
+        )
+    }, [estCostPer, milesTraveled, purchasePrice, insuranceLegalExpenses, serviceExpenses]);
+
+    useEffect(() => {
+        const a = moment(purchaseDate);
+        const b = currentDate ? moment(currentDate) : moment();
+        const monthlyDiff = b.diff(a, 'months');
+
+        if (!isNaN(monthlyDiff) && grandTotal) {
+            const output = grandTotal / monthlyDiff;
+            if (!isNaN(output)) setMonthlyCost(output.toFixed(2));
+        }
+    }, [grandTotal])
+
 
     //functions
     return (
@@ -35,10 +66,18 @@ function SummaryReport() {
                 <h4>Summary</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Total Cost and Expenses:</FormLabel>
+                        <FormLabel>Total Monthly Cost:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(((estCostPer * milesTraveled) + purchasePrice).toFixed(2))} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((monthlyCost))} />
+                    </FormField>
+                </FormRow>
+                <FormRow className="form-row">
+                    <FormField className="form-field label-only">
+                        <FormLabel>Grand Total:</FormLabel>
+                    </FormField>
+                    <FormField className="form-field">
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((grandTotal).toFixed(2))} />
                     </FormField>
                 </FormRow>
             </Form>

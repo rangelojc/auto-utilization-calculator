@@ -168,3 +168,28 @@ export const FormHR = styled.div`
     border-bottom: 1px solid #e0e0e0;
     margin: 20px 0px;
 `
+
+const FormAddEntryBtn = styled.button`
+    height: 30px;
+    width: 40px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ba68c8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    img{
+        height: 30px;
+        width: 30px;
+    }
+`
+
+export const FormAddEntry = (props) => {
+    return (
+        <FormAddEntryBtn {...props}>+</FormAddEntryBtn>
+    )
+}

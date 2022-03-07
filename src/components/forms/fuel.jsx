@@ -37,6 +37,7 @@ function FuelForm() {
                         </FormField>
                     </FormField>
                 </FormRow>
+                <FormHR />
             </Form>
         </FormWrapper>
     );
