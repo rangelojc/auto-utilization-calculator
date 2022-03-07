@@ -31,7 +31,7 @@ function FuelForm() {
                     <FormField className="form-field">
                         <FormLabel>Est. Fuel Cost</FormLabel>
                         <FormField className="form-field pos-rel">
-                            <FormInput type="number" placeholder="0" onChange={v => dispatch(setConsumption(v.target.value))} />
+                            <FormInput type="number" placeholder="0" onChange={v => dispatch(setCostPer(v.target.value))} />
                             <FormUnit>{"/" + fuelUnit}</FormUnit>
                         </FormField>
                     </FormField>

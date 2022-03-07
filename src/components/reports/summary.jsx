@@ -35,7 +35,7 @@ function SummaryReport() {
                 <h4>Summary</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Total Cost:</FormLabel>
+                        <FormLabel>Total Cost and Expenses:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(((estCostPer * milesTraveled) + purchasePrice).toFixed(2))} />

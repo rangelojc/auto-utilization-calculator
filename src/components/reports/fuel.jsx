@@ -33,10 +33,10 @@ function FuelReport() {
     return (
         <Wrapper>
             <Form>
-                <h4>Fuel Utilization</h4>
+                <h4>Fuel Expenses Estimation</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Estimated Fuel Cost</FormLabel>
+                        <FormLabel>Fuel Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={currency + " " + estCostPer.toFixed(2) + ` /${distanceUnit}`} />
@@ -44,7 +44,7 @@ function FuelReport() {
                 </FormRow>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Total Fuel Cost</FormLabel>
+                        <FormLabel>Total Fuel Expenses</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((estCostPer * milesTraveled).toFixed(2))} />
