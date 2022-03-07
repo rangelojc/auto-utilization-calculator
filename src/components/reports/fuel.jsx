@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { numberWithCommas } from "../../utils/utils.js"
 
@@ -20,6 +21,7 @@ const Wrapper = styled.div`
 `
 
 function FuelReport() {
+    const [fuelConsumed, setFuelConsumed] = useState("2");
 
     //redux
     const consumption = useSelector(state => state.fuel.consumption)
@@ -29,6 +31,11 @@ function FuelReport() {
     const currency = useSelector(state => state.config.currency)
     const distanceUnit = useSelector(state => state.config.distanceUnit)
     const fuelUnit = useSelector(state => state.config.fuelUnit)
+
+    useEffect(() => {
+        const quo = (milesTraveled / consumption);
+        if (!isNaN(quo)) setFuelConsumed(quo.toFixed(2));
+    }, [milesTraveled, consumption])
 
     //functions
     return (
@@ -40,7 +47,8 @@ function FuelReport() {
                         <FormLabel>Fuel Cost</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={currency + " " + estCostPer.toFixed(2) + ` /${distanceUnit}`} />
+                        <FormInput className="result-field align-right" readOnly
+                            value={currency + " " + estCostPer.toFixed(2) + ` /${distanceUnit}`} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
@@ -48,7 +56,8 @@ function FuelReport() {
                         <FormLabel>Fuel Consumed</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={numberWithCommas((milesTraveled / consumption).toFixed(2)) + ` ${fuelUnit}`} />
+                        <FormInput className="result-field align-right" readOnly
+                            value={numberWithCommas(fuelConsumed) + ` ${fuelUnit}`} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
@@ -56,7 +65,8 @@ function FuelReport() {
                         <FormLabel>Total Fuel Expenses</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((estCostPer * milesTraveled).toFixed(2))} />
+                        <FormInput className="result-field align-right" readOnly
+                            value={currency + " " + numberWithCommas((estCostPer * milesTraveled).toFixed(2))} />
                     </FormField>
                 </FormRow>
             </Form>
