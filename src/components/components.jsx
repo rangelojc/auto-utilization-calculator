@@ -160,6 +160,7 @@ export const FormUnit = styled.span`
     right: 10px;
     top: 12px;
     font-size: 12px;
+    user-select: none;
 `
 
 export const FormHR = styled.div`

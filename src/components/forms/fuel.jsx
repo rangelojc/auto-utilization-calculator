@@ -14,6 +14,7 @@ function FuelForm() {
     //redux
     const distanceUnit = useSelector(state => state.config.distanceUnit)
     const fuelUnit = useSelector(state => state.config.fuelUnit)
+    const currency = useSelector(state => state.config.currency)
 
     return (
         <FormWrapper>
@@ -32,7 +33,7 @@ function FuelForm() {
                         <FormLabel>Est. Fuel Cost</FormLabel>
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder="0" onChange={v => dispatch(setCostPer(v.target.value))} />
-                            <FormUnit>{"/" + fuelUnit}</FormUnit>
+                            <FormUnit>{currency + "/" + fuelUnit}</FormUnit>
                         </FormField>
                     </FormField>
                 </FormRow>
