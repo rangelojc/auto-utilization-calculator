@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Foot = styled.div`
     width: 100%;
-    height: 200px;
+    height: 150px;
     margin-top: 20px;
     
     display: flex;
@@ -14,12 +14,13 @@ const Foot = styled.div`
 const Links = styled.div`
     display: flex;
     flex-flow: column nowrap;
-    font-size: 16px;
+    font-size: 14px;
+    margin-top: 10px;
 `
 
 const Author = styled.div`
     margin-top: 50px;
-    font-size: 17px;
+    font-size: 14px;
 `
 
 function Footer() {
@@ -31,6 +32,7 @@ function Footer() {
 
     return (
         <Foot>
+            {/* <span style={{ fontSize: 16 }}>Configure me</span> */}
             <Links>
                 {
                     isAdvanced ? <span>Check out the <a href={`?advanced=false${config}`}>standard calculator</a>. </span>
@@ -49,7 +51,7 @@ function Footer() {
                     <a href={`?advanced=${isAdvanced}&currency=${_currencyParam}&unit=imperial`}>Imperial</a>&nbsp;
                 </div>
             </Links>
-            <Author>©️ Ramce Concepcion</Author>
+            {/* <Author>©️ Ramce Concepcion</Author> */}
         </Foot>
     );
 }
