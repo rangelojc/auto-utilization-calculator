@@ -21,7 +21,7 @@ const Entry = ({ data, update }) => {
                 </FormField>
             </FormField>
             <FormField className="form-field">
-                <FormLabel>Item Name</FormLabel>
+                <FormLabel>Item</FormLabel>
                 <FormField className="form-field pos-rel">
                     <FormInput type="text" placeholder="" onChange={(v) => update(data.id, "name", v.target.value)} />
                 </FormField>
@@ -40,14 +40,14 @@ const Entry = ({ data, update }) => {
 function ServiceForm() {
     const dispatch = useDispatch();
 
-    const [entries, setEntries] = useState([]);
+    const [entries, setEntries] = useState([{ id: 0 }]);
 
     //redux
 
     //effect
     useEffect(() => {
         const totalCosts = entries.reduce((a, b) => a + b.cost, 0);
-        dispatch(setServiceExp(totalCosts));
+        if (!isNaN(totalCosts) && totalCosts !== null) dispatch(setServiceExp(totalCosts));
     }, [entries])
 
     //functions

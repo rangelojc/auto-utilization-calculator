@@ -40,10 +40,12 @@ function SummaryReport() {
 
     useEffect(() => {
         setGrandTotal(
-            (estCostPer * milesTraveled)
-            + purchasePrice
-            + insuranceLegalExpenses
-            + serviceExpenses
+            (
+                ((estCostPer * milesTraveled) || 0)
+                + (purchasePrice || 0)
+                + (insuranceLegalExpenses || 0)
+                + (serviceExpenses || 0)
+            ).toFixed(2)
         )
     }, [estCostPer, milesTraveled, purchasePrice, insuranceLegalExpenses, serviceExpenses]);
 
@@ -69,7 +71,7 @@ function SummaryReport() {
                         <FormLabel>Total Monthly Cost:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((monthlyCost))} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(monthlyCost)} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">
@@ -77,7 +79,7 @@ function SummaryReport() {
                         <FormLabel>Grand Total:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas((grandTotal).toFixed(2))} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(grandTotal)} />
                     </FormField>
                 </FormRow>
             </Form>

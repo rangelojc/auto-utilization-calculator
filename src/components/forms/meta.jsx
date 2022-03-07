@@ -4,7 +4,7 @@ import moment from "moment"
 
 import { Form, FormField, FormRow, FormInput, FormLabel, FormHR, FormUnit } from "../components";
 
-import { setYear, setMake, setModel, setPurchaseOdo, setPurchaseDate, setCurrentOdo, setPurchasePrice, setCurrentDate } from '../../store/metaReducer.js'
+import { setYear, setMake, setModel, setPurchaseOdo, setPurchaseDate, setCurrentOdo, setPurchasePrice, setCurrentDate, setMilesTraveled } from '../../store/metaReducer.js'
 
 const FormWrapper = styled.div`
 `
@@ -49,24 +49,12 @@ function MetaForm() {
                         <FormInput type="date" onChange={v => dispatch(setPurchaseDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
-                        <FormLabel>Odometer Reading</FormLabel>
-
-                        <FormField className="form-field pos-rel">
-                            <FormInput type="number" placeholder="0" onChange={v => dispatch(setPurchaseOdo(v.target.value))} />
-                            <FormUnit>{distanceUnit}</FormUnit>
-                        </FormField>
-                    </FormField>
-                </FormRow>
-                <FormRow>
-                    <FormField className="form-field">
                         <FormLabel>Price Purchased</FormLabel>
 
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder="0.00" onChange={v => dispatch(setPurchasePrice(v.target.value))} />
                             <FormUnit>{currency}</FormUnit>
                         </FormField>
-                    </FormField>
-                    <FormField className="form-field">
                     </FormField>
                 </FormRow>
                 <FormHR />
@@ -78,9 +66,9 @@ function MetaForm() {
                         <FormInput type="date" value={currentDate || moment().format("YYYY-MM-DD")} onChange={v => dispatch(setCurrentDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
-                        <FormLabel>Current Odometer Reading</FormLabel>
+                        <FormLabel>Distance traveled since purchase</FormLabel>
                         <FormField className="form-field pos-rel">
-                            <FormInput type="number" placeholder={0} onChange={v => dispatch(setCurrentOdo(v.target.value))} />
+                            <FormInput type="number" placeholder={0} onChange={v => dispatch(setMilesTraveled(v.target.value * 1))} />
                             <FormUnit>{distanceUnit}</FormUnit>
                         </FormField>
                     </FormField>

@@ -46,6 +46,9 @@ export const slice = createSlice({
                 state.milesTraveled = dff > 0 ? dff : 0;
             }
         },
+        setMilesTraveled: (state, { payload }) => {
+            state.milesTraveled = payload
+        },
         setCurrentDate: (state, { payload }) => {
             state.currentDate = payload
         },
@@ -53,6 +56,6 @@ export const slice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setYear, setMake, setModel, setPurchaseOdo, setCurrentOdo, setPurchasePrice, setPurchaseDate, setCurrentDate } = slice.actions
+export const { setYear, setMake, setModel, setMilesTraveled, setPurchaseOdo, setCurrentOdo, setPurchasePrice, setPurchaseDate, setCurrentDate } = slice.actions
 
 export default slice.reducer

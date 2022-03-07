@@ -34,7 +34,7 @@ function FuelReport() {
 
     useEffect(() => {
         const quo = (milesTraveled / consumption);
-        if (!isNaN(quo)) setFuelConsumed(quo.toFixed(2));
+        if (!isNaN(quo) && isFinite(quo)) setFuelConsumed(quo.toFixed(2));
     }, [milesTraveled, consumption])
 
     //functions

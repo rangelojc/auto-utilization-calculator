@@ -21,7 +21,7 @@ const Entry = ({ data, update }) => {
                 </FormField>
             </FormField>
             <FormField className="form-field">
-                <FormLabel>Item Name</FormLabel>
+                <FormLabel>Item</FormLabel>
                 <FormField className="form-field pos-rel">
                     <FormInput type="text" placeholder="" onChange={(v) => update(data.id, "name", v.target.value)} />
                 </FormField>
@@ -40,14 +40,15 @@ const Entry = ({ data, update }) => {
 function InsuranceForm() {
     const dispatch = useDispatch();
 
-    const [entries, setEntries] = useState([]);
+    const [entries, setEntries] = useState([{ id: 0 }]);
 
     //redux
 
     //effect
     useEffect(() => {
         const totalCosts = entries.reduce((a, b) => a + b.cost, 0);
-        dispatch(setInsuranceLegalExp(totalCosts));
+
+        if (!isNaN(totalCosts) && totalCosts !== null) dispatch(setInsuranceLegalExp(totalCosts));
     }, [entries])
 
     //functions
