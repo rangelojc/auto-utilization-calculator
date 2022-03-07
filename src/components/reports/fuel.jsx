@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 `
 
 function FuelReport() {
-    const [fuelConsumed, setFuelConsumed] = useState("2");
+    const [fuelConsumed, setFuelConsumed] = useState("0");
 
     //redux
     const consumption = useSelector(state => state.fuel.consumption)
