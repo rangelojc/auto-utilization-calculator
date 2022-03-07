@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
-    name: 'meta',
+    name: 'fuel',
     initialState: {
         consumption: 0,
         costPer: 0,
