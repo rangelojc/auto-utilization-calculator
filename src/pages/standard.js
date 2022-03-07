@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Footer from "../components/footer";
 
 import MetaForm from "../components/forms/meta";
 import FuelForm from "../components/forms/fuel";
@@ -53,31 +54,32 @@ const ReportCol = styled(Columns)`
 `
 
 function StandardPage() {
-    return (
-        <Wrapper>
-            <h2 style={{ color: "#ba68c8" }}>Automotive Utilization Calculator</h2>
-            <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its overall costs.</p>
+  return (
+    <Wrapper>
+      <h2 style={{ color: "#ba68c8" }}>Automotive Utilization Calculator</h2>
+      <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its overall costs.</p>
 
-            <Body>
-                <CalculationCol>
-                    <MetaForm />
-                    <FuelForm />
-                </CalculationCol>
+      <Body>
+        <CalculationCol>
+          <MetaForm />
+          <FuelForm />
+        </CalculationCol>
 
-                <ReportCol>
-                    <br></br>
-                    <BasicReport />
-                    <br></br>
-                    <PurchaseReport />
-                    <br></br>
-                    <FuelReport />
-                    <br></br>
-                    <SummaryReport />
-                </ReportCol>
+        <ReportCol>
+          <br></br>
+          <BasicReport />
+          <br></br>
+          <PurchaseReport />
+          <br></br>
+          <FuelReport />
+          <br></br>
+          <SummaryReport />
+        </ReportCol>
 
-            </Body>
-        </Wrapper>
-    );
+      </Body>
+      <Footer></Footer>
+    </Wrapper>
+  );
 }
 
 export default StandardPage;

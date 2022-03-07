@@ -9,7 +9,10 @@ const urlParams = window.location.search.slice(1)
 const initialState = {
     currency: "₱",
     distanceUnit: "km",
-    fuelUnit: "L"
+    fuelUnit: "L",
+    advanced: urlParams.advanced === "true",
+    _currencyParam: urlParams.currency || "php",
+    _unitParam: urlParams.unit || "metric"
 };
 
 switch (urlParams.currency) {

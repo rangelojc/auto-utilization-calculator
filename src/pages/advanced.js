@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Footer from "../components/footer";
+
 import MetaForm from "../components/forms/meta";
 import FuelForm from "../components/forms/fuel";
 import InsuranceForm from "../components/forms/insurance";
@@ -88,6 +90,8 @@ function AdvancedPage() {
         </ReportCol>
 
       </Body>
+
+      <Footer></Footer>
     </Wrapper>
   );
 }
