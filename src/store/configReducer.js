@@ -6,7 +6,11 @@ const urlParams = window.location.search.slice(1)
     .map(p => p.split('='))
     .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});;
 
-const initialState = {};
+const initialState = {
+    currency: "₱",
+    distanceUnit: "km",
+    fuelUnit: "L"
+};
 
 switch (urlParams.currency) {
     case "php": initialState.currency = "₱"; break;
