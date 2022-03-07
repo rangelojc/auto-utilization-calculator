@@ -1,23 +1,21 @@
 import styled from "styled-components";
+import { useSelector, useDispatch } from 'react-redux';
+
+import { createPDFfromHTML } from "../utils/utils.js"
 
 import Footer from "../components/footer";
 
 import MetaForm from "../components/forms/meta";
 import FuelForm from "../components/forms/fuel";
-import InsuranceForm from "../components/forms/insurance";
-import ServiceForm from "../components/forms/service";
 
 import BasicReport from "../components/reports/basic";
 import PurchaseReport from "../components/reports/purchase";
 import FuelReport from "../components/reports/fuel";
-import InsuranceReport from "../components/reports/insurance";
-import ServiceReport from "../components/reports/service";
 
 import { Wrapper } from '../components/components';
 import SummaryReport from '../components/reports/summary';
 
 import breakpoint from '../utils/breakpoints';
-
 
 const Body = styled.div`
   width: 100%;
@@ -59,41 +57,58 @@ const ReportCol = styled(Columns)`
   }
 `
 
-function AdvancedPage() {
+const DownloadButton = styled.button`
+    height: 40px;
+    width: 100%;
+    border: 0;
+    border-radius: 0px;
+    cursor: pointer;
+    background: #ba68c8;
+    font-size: 16px;
+
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+`
+
+function StandardPage() {
+  const carInfo = useSelector(state => {
+    if (!state.meta.year || !state.meta.make || !state.meta.model) return "Unnamed Car";
+    else return `${state.meta.year} ${state.meta.make} ${state.meta.model}`
+  })
+
   return (
     <Wrapper>
-      <h2 style={{ color: "#ba68c8" }}>Automotive Utilization Calculator (Advanced)</h2>
-      <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its overall costs including insurance and service history.</p>
+      <h2 style={{ color: "#ba68c8" }}>Automotive Utilization Calculator</h2>
+      <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its overall costs.</p>
 
       <Body>
         <CalculationCol>
           <MetaForm />
           <FuelForm />
-          <InsuranceForm />
-          <ServiceForm />
         </CalculationCol>
 
         <ReportCol>
-          <br></br>
-          <BasicReport />
-          <br></br>
-          <PurchaseReport />
-          <br></br>
-          <FuelReport />
-          <br></br>
-          <InsuranceReport />
-          <br></br>
-          <ServiceReport />
-          <br></br>
-          <SummaryReport />
-
+          <div id="reports_cont">
+            <br></br>
+            <BasicReport />
+            <br></br>
+            <PurchaseReport />
+            <br></br>
+            <FuelReport />
+            <br></br>
+            <SummaryReport />
+          </div>
+          <DownloadButton onClick={() => { createPDFfromHTML(carInfo) }}>Download</DownloadButton>
         </ReportCol>
 
       </Body>
-
       <Footer></Footer>
     </Wrapper>
   );
 }
 
-export default AdvancedPage;
+export default StandardPage;
