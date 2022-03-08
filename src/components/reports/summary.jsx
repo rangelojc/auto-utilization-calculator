@@ -58,7 +58,7 @@ function SummaryReport() {
             const output = grandTotal / monthlyDiff;
             if (!isNaN(output)) setMonthlyCost(output.toFixed(2));
         }
-    }, [grandTotal])
+    }, [grandTotal, purchaseDate, currentDate])
 
 
     //functions
