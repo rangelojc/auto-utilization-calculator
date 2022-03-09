@@ -73,9 +73,8 @@ export const FormError = styled.span`
 `;
 
 export const FormLabel = styled.label`
-    font-size: 12px;
     color: var(--white);
-    font-weight: 500;
+    /* font-weight: 500; */
     vertical-align: middle;
 
     display: flex;
@@ -90,7 +89,7 @@ export const FormInput = styled.input`
     border-radius: 5px;
     outline: 0px;
     padding: 0 12px;
-    font-size: 14px;
+    font-size: 1.1em;
 
     color: var(--white);
     font-weight: 500;
@@ -123,7 +122,6 @@ export const FormTextArea = styled.textarea`
     border: 1px solid #414E54;
     outline: 0px;
     padding: 12px;
-    font-size: 12px;
 
     color: var(--white);
     font-weight: 500;
@@ -147,7 +145,6 @@ export const FormSelect = styled.select`
     border: 1px solid #414E54;
     outline: 0px;
     padding: 0 12px;
-    font-size: 12px;
 
     color: var(--white);
     font-weight: 500;
@@ -166,7 +163,6 @@ export const FormUnit = styled.span`
     position: absolute;
     right: 10px;
     top: 12px;
-    font-size: 12px;
     user-select: none;
 `
 

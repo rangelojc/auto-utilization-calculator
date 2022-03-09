@@ -64,7 +64,7 @@ const DownloadButton = styled.button`
     border-radius: 0px;
     cursor: pointer;
     background: #9c44ac;
-    font-size: 16px;
+    font-size: 1.3em;
 
     margin-top: 20px;
     display: flex;

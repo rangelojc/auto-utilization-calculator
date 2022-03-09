@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     padding: 1px 20px 10px;
 
     .result-field{
-        font-size: 16px;
+        font-size: 1.3em;
     }
 
     .form-row{

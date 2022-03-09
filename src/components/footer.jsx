@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Foot = styled.div`
     width: 100%;
-    height: 150px;
+    height: 200px;
     margin-top: 20px;
     
     display: flex;
@@ -14,7 +14,7 @@ const Foot = styled.div`
 const Links = styled.div`
     display: flex;
     flex-flow: column nowrap;
-    font-size: 14px;
+    font-size: 1em;
     margin-top: 10px;
 `
 
@@ -22,8 +22,8 @@ const Author = styled.div`
     margin-left: auto;
     margin-top: 50px;
     text-align: center;
+    font-size: 0.9em;
 
-    font-size: 12px;
     letter-spacing: 1px;
     font-weight: 500; 
 `
