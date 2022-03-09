@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     border: 1px solid #9c44ac;
 
     .result-field{
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
 
     .form-row{
