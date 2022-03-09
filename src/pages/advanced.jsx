@@ -100,7 +100,7 @@ function AdvancedPage() {
           <ModsForm />
         </CalculationCol>
 
-        <ReportCol>
+        <ReportCol className="reports-wrapper">
           <div id="reports_cont">
             <br></br>
             <BasicReport />

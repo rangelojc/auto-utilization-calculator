@@ -65,7 +65,7 @@ export const FormError = styled.span`
     position: relative;
     top: 5px;
     display: block;
-    color: var(--red);
+    color: red;
     text-align: right;
     width: 100%;
     height: 20px;
@@ -73,7 +73,6 @@ export const FormError = styled.span`
 `;
 
 export const FormLabel = styled.label`
-    color: var(--white);
     /* font-weight: 500; */
     vertical-align: middle;
 
@@ -91,7 +90,6 @@ export const FormInput = styled.input`
     padding: 0 12px;
     font-size: 1.1em;
 
-    color: var(--white);
     font-weight: 500;
     transition: background-color 0.2s ease-in-out;
 
@@ -123,7 +121,6 @@ export const FormTextArea = styled.textarea`
     outline: 0px;
     padding: 12px;
 
-    color: var(--white);
     font-weight: 500;
     transition: background-color 0.2s ease-in-out;
     min-height: 70px;
@@ -146,7 +143,6 @@ export const FormSelect = styled.select`
     outline: 0px;
     padding: 0 12px;
 
-    color: var(--white);
     font-weight: 500;
     transition: background-color 0.2s ease-in-out;
 

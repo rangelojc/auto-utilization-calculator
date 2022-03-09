@@ -10,9 +10,6 @@ const initialState = {
     currency: "₱",
     distanceUnit: "km",
     fuelUnit: "L",
-    advanced: urlParams.advanced === "true",
-    _currencyParam: urlParams.currency || "php",
-    _unitParam: urlParams.unit || "metric"
 };
 
 switch (urlParams.currency) {
@@ -36,7 +33,13 @@ switch (urlParams.unit) {
 //create slice
 export const slice = createSlice({
     name: 'config',
-    initialState,
+    initialState: {
+        ...initialState,
+        advanced: urlParams.advanced === "true",
+        _currencyParam: urlParams.currency || "php",
+        _unitParam: urlParams.unit || "metric",
+        darkMode: true,
+    },
     reducers: {
         setDistanceUnit: (state, { payload }) => {
             state.distanceUnit = payload
@@ -44,10 +47,13 @@ export const slice = createSlice({
         setFuelUnit: (state, { payload }) => {
             state.fuelUnit = payload
         },
+        setDarkMode: (state, { payload }) => {
+            state.darkMode = payload
+        },
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { setDistanceUnit, setFuelUnit } = slice.actions
+export const { setDistanceUnit, setFuelUnit, setDarkMode } = slice.actions
 
 export default slice.reducer

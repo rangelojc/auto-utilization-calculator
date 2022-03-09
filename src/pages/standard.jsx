@@ -16,6 +16,7 @@ import { Wrapper } from '../components/components';
 import SummaryReport from '../components/reports/summary';
 
 import breakpoint from '../utils/breakpoints';
+import DarkModeSwitch from "../components/dark-mode-switch.jsx";
 
 const Body = styled.div`
   width: 100%;
@@ -82,6 +83,7 @@ function StandardPage() {
 
   return (
     <Wrapper>
+      <DarkModeSwitch />
       <h2 style={{ color: "#9c44ac" }}>Automotive Utilization Calculator</h2>
       <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its purchase price and fuel costs.</p>
 
@@ -91,7 +93,7 @@ function StandardPage() {
           <FuelForm />
         </CalculationCol>
 
-        <ReportCol>
+        <ReportCol className="reports-wrapper">
           <div id="reports_cont">
             <br></br>
             <BasicReport />
