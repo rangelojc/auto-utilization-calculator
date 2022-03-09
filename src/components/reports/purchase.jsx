@@ -42,6 +42,8 @@ function BasicReport() {
     useEffect(() => {
         const output = purchasePrice / milesTraveled;
         if (!isNaN(output) && isFinite(output)) setPerMileageCost(output.toFixed(2));
+        else setPerMileageCost(0);
+
     }, [purchasePrice, milesTraveled]);
 
     useEffect(() => {
@@ -90,7 +92,7 @@ function BasicReport() {
                         <FormLabel>Cost Per Distance</FormLabel>
                     </FormField>
                     <FormField className="form-field">
-                        <FormInput className="result-field align-right" readOnly value={currency + " " + perMileageCost + ` /${distanceUnit}`} />
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(perMileageCost) + ` /${distanceUnit}`} />
                     </FormField>
                 </FormRow>
                 <FormRow className="form-row">

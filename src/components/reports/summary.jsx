@@ -27,6 +27,7 @@ function SummaryReport() {
     const [dailyCost, setDailyCost] = useState(0);
     const [monthlyCost, setMonthlyCost] = useState(0);
     const [yearlyCost, setYearlyCost] = useState(0);
+    const [perMileageCost, setPerMileageCost] = useState(0);
 
     //redux
     const estCostPer = useSelector(state => state.fuel.estCostPer)
@@ -36,11 +37,19 @@ function SummaryReport() {
     const milesTraveled = useSelector(state => state.meta.milesTraveled)
     const purchasePrice = useSelector(state => state.meta.purchasePrice)
 
+    const distanceUnit = useSelector(state => state.config.distanceUnit)
+
     const insuranceLegalExpenses = useSelector(state => state.itemizedExpenses.insuranceLegalExpenses)
     const serviceExpenses = useSelector(state => state.itemizedExpenses.serviceExpenses)
     const modsExpenses = useSelector(state => state.itemizedExpenses.modsExpenses)
 
     const currency = useSelector(state => state.config.currency)
+
+    useEffect(() => {
+        const output = grandTotal / milesTraveled;
+        if (!isNaN(output) && isFinite(output)) setPerMileageCost(output.toFixed(2));
+        else setPerMileageCost(0);
+    }, [grandTotal, milesTraveled]);
 
     useEffect(() => {
         setGrandTotal(
@@ -107,6 +116,14 @@ function SummaryReport() {
                         <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(yearlyCost)} />
                     </FormField>
                 </FormRow> */}
+                <FormRow className="form-row">
+                    <FormField className="form-field label-only">
+                        <FormLabel>Cost Per Distance</FormLabel>
+                    </FormField>
+                    <FormField className="form-field">
+                        <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(perMileageCost) + ` /${distanceUnit}`} />
+                    </FormField>
+                </FormRow>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
                         <FormLabel>Grand Total:</FormLabel>
