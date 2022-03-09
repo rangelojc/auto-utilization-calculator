@@ -19,8 +19,13 @@ const Links = styled.div`
 `
 
 const Author = styled.div`
+    margin-left: auto;
     margin-top: 50px;
-    font-size: 14px;
+    text-align: center;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 500; 
 `
 
 function Footer() {
@@ -51,7 +56,7 @@ function Footer() {
                     <a href={`?advanced=${isAdvanced}&currency=${_currencyParam}&unit=imperial`}>Imperial</a>&nbsp;
                 </div>
             </Links>
-            {/* <Author>©️ Ramce Concepcion</Author> */}
+            <Author>©️  {new Date().getFullYear()} │ rangelo.dev</Author>
         </Foot>
     );
 }

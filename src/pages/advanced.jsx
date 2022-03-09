@@ -8,12 +8,14 @@ import MetaForm from "../components/forms/meta";
 import FuelForm from "../components/forms/fuel";
 import InsuranceForm from "../components/forms/insurance";
 import ServiceForm from "../components/forms/service";
+import ModsForm from "../components/forms/mods";
 
 import BasicReport from "../components/reports/basic";
 import PurchaseReport from "../components/reports/purchase";
 import FuelReport from "../components/reports/fuel";
 import InsuranceReport from "../components/reports/insurance";
 import ServiceReport from "../components/reports/service";
+import ModsReport from "../components/reports/mods.jsx";
 
 import { Wrapper } from '../components/components';
 import SummaryReport from '../components/reports/summary';
@@ -95,6 +97,7 @@ function AdvancedPage() {
           <FuelForm />
           <InsuranceForm />
           <ServiceForm />
+          <ModsForm />
         </CalculationCol>
 
         <ReportCol>
@@ -109,6 +112,8 @@ function AdvancedPage() {
             <InsuranceReport />
             <br></br>
             <ServiceReport />
+            <br></br>
+            <ModsReport />
             <br></br>
             <SummaryReport />
           </div>

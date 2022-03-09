@@ -38,6 +38,7 @@ function SummaryReport() {
 
     const insuranceLegalExpenses = useSelector(state => state.itemizedExpenses.insuranceLegalExpenses)
     const serviceExpenses = useSelector(state => state.itemizedExpenses.serviceExpenses)
+    const modsExpenses = useSelector(state => state.itemizedExpenses.modsExpenses)
 
     const currency = useSelector(state => state.config.currency)
 
@@ -48,9 +49,10 @@ function SummaryReport() {
                 + (purchasePrice || 0)
                 + (insuranceLegalExpenses || 0)
                 + (serviceExpenses || 0)
+                + (modsExpenses || 0)
             ).toFixed(2)
         )
-    }, [estCostPer, milesTraveled, purchasePrice, insuranceLegalExpenses, serviceExpenses]);
+    }, [estCostPer, milesTraveled, purchasePrice, insuranceLegalExpenses, serviceExpenses, modsExpenses]);
 
     useEffect(() => {
         const a = moment(purchaseDate);
@@ -83,7 +85,7 @@ function SummaryReport() {
                 <h4>Summary</h4>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Total Daily Cost:</FormLabel>
+                        <FormLabel>Total Daily Utilization:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(dailyCost)} />
@@ -91,7 +93,7 @@ function SummaryReport() {
                 </FormRow>
                 <FormRow className="form-row">
                     <FormField className="form-field label-only">
-                        <FormLabel>Total Monthly Cost:</FormLabel>
+                        <FormLabel>Total Monthly Utilization:</FormLabel>
                     </FormField>
                     <FormField className="form-field">
                         <FormInput className="result-field align-right" readOnly value={currency + " " + numberWithCommas(monthlyCost)} />

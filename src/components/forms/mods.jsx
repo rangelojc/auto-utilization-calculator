@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from "react"
 
 import { Form, FormField, FormRow, FormInput, FormLabel, FormHR, FormUnit, FormAddEntry } from "../components";
-import { setServiceExp } from '../../store/itemizedExpensesReducer.js'
+import { setModsExp } from '../../store/itemizedExpensesReducer.js'
 
 import HelpTooltip from "../help-tooltip"
 import Switch from "../switch";
 
 const FormWrapper = styled.div`
 `
-
 
 const Entry = ({ data, update }) => {
     const currency = useSelector(state => state.config.currency);
@@ -56,7 +55,7 @@ const OverallEntry = ({ data, update }) => {
     )
 }
 
-function ServiceForm() {
+function ModsForm() {
     const dispatch = useDispatch();
 
     const [entries, setEntries] = useState([{ id: 0, cost: 0 }]);
@@ -69,13 +68,13 @@ function ServiceForm() {
     useEffect(() => {
         if (isOverall) return;
         const totalCosts = entries.reduce((a, b) => a + b.cost, 0);
-        if (!isNaN(totalCosts) && totalCosts !== null) dispatch(setServiceExp(totalCosts));
+        if (!isNaN(totalCosts) && totalCosts !== null) dispatch(setModsExp(totalCosts));
     }, [entries, isOverall])
 
     useEffect(() => {
         if (!isOverall) return;
         const totalCosts = ovEntry.cost;
-        if (!isNaN(totalCosts) && totalCosts !== null) dispatch(setServiceExp(totalCosts));
+        if (!isNaN(totalCosts) && totalCosts !== null) dispatch(setModsExp(totalCosts));
     }, [ovEntry, isOverall])
 
     //functions
@@ -103,7 +102,7 @@ function ServiceForm() {
         <FormWrapper>
             <Form>
                 <h4 style={{ display: "flex", alignItems: "center" }}>
-                    Service Expenses
+                    Mods / Accessories Expenses
                     <HelpTooltip dataTip="You can list an itemized breakdown here or just an overall estimation. <br> The calculation is the same" />
                     <Switch val={isOverall} set={setOverall} />
                 </h4>
@@ -125,4 +124,4 @@ function ServiceForm() {
     );
 }
 
-export default ServiceForm;
+export default ModsForm;
