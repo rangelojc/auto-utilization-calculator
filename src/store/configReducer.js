@@ -38,7 +38,7 @@ export const slice = createSlice({
         advanced: urlParams.advanced === "true",
         _currencyParam: urlParams.currency || "php",
         _unitParam: urlParams.unit || "metric",
-        darkMode: true,
+        darkMode: false,
     },
     reducers: {
         setDistanceUnit: (state, { payload }) => {

@@ -164,7 +164,7 @@ export const FormUnit = styled.span`
 
 export const FormHR = styled.div`
     width: 100%;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #9b9b9b;
     margin: 20px 0px;
 `
 

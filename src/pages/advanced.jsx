@@ -21,6 +21,7 @@ import { Wrapper } from '../components/components';
 import SummaryReport from '../components/reports/summary';
 
 import breakpoint from '../utils/breakpoints';
+import DarkModeSwitch from "../components/dark-mode-switch.jsx";
 
 const Body = styled.div`
   width: 100%;
@@ -88,6 +89,7 @@ function AdvancedPage() {
 
   return (
     <Wrapper>
+      <DarkModeSwitch />
       <h2 style={{ color: "#9c44ac" }}>Automotive Utilization Calculator (Advanced)</h2>
       <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its overall costs including insurance and service history.</p>
 

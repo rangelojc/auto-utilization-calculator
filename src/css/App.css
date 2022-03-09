@@ -7,24 +7,28 @@
 /* dark mode */
 .App.dark{
   background: #222;
-  color: #fafafa;
+  color: #f0f0f0;
 }
 
 .App.dark input:not([readOnly]){
   background: #333;
-  color: #fafafa;
+  color: #f0f0f0;
 }
 
 .App.dark input{
-  color: #fafafa;
+  color: #f0f0f0;
+}
+
+.App.dark input::placeholder{
+  color: #929292;
 }
 
 .App.dark .reports-wrapper{
   background: #111;
-  color: #fafafa;
+  color: #f0f0f0;
 }
 
 .App.dark .reports-wrapper #reports_cont>div{
   background: #333;
-  color: #fafafa;
+  color: #f0f0f0;
 }

@@ -4,16 +4,13 @@ import Switch from "react-switch";
 import { useDispatch, useSelector } from 'react-redux';
 import { setDarkMode } from '../store/configReducer';
 
-const DarkModeSwitch = styled.label`
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 10px;
+const DarkModeSwitch = styled.div`
     position: absolute;
     top: 5px; right: 5px;
 
     span{
         font-size: 11px;
-        margin-right: 5px;
+        margin-right: 10px;
         font-weight: 500;
     }
 
@@ -30,14 +27,16 @@ export default () => {
     return (
         <DarkModeSwitch>
             <Switch
-                className="dark-mode-switch"
+                className="react-switch"
                 onColor="#111"
-                onHandleColor="#333"
+                onHandleColor="#444"
+                offColor="#e0e0e0"
+                offHandleColor="#b9b9b9"
+                checkedIcon={<img src="./assets/moon.png" style={{ height: "18px", margin: "1px 0 0 10px" }} />}
+                uncheckedIcon={<img src="./assets/sun.png" style={{ height: "20px", margin: "0px 0 0 3px" }} />}
                 handleDiameter={20}
-                uncheckedIcon={false}
-                checkedIcon={false}
                 height={20}
-                width={40}
+                width={50}
                 onChange={() => { dispatch(setDarkMode(!darkMode)) }}
                 checked={darkMode} />
         </DarkModeSwitch>

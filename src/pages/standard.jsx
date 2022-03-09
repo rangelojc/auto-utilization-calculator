@@ -84,6 +84,7 @@ function StandardPage() {
   return (
     <Wrapper>
       <DarkModeSwitch />
+
       <h2 style={{ color: "#9c44ac" }}>Automotive Utilization Calculator</h2>
       <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its purchase price and fuel costs.</p>
 
