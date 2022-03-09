@@ -64,14 +64,14 @@ function MetaForm() {
                     <FormField className="form-field">
                         <FormLabel>
                             Current Date of Ownership
-                            <HelpTooltip dataTip="If you no longer own the car you can modify this date to the last date of ownership." />
+                            <HelpTooltip dataTip="If you no longer own the car you can modify this date to the last date of ownership. <br> You can also set a future date to get projected calculations." />
                         </FormLabel>
                         <FormInput type="date" value={currentDate || moment().format("YYYY-MM-DD")} onChange={v => dispatch(setCurrentDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
                         <FormLabel className="with-help">
                             Distance traveled since purchase
-                            <HelpTooltip dataTip="Your current odometer reading minus the reading when you purchased the car. <br> If the car is brand new then just put whatever is in your car's odometer." />
+                            <HelpTooltip dataTip="Your current odometer reading minus the reading when you purchased the car. <br> If the car was brand new then just put whatever is in your car's odometer. <br> You can also set a reading higher than your current to get projected calculations." />
                         </FormLabel>
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder={0} onChange={v => dispatch(setMilesTraveled(v.target.value * 1))} />
