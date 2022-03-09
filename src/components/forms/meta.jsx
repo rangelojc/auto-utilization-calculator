@@ -49,7 +49,10 @@ function MetaForm() {
                         <FormInput type="date" onChange={v => dispatch(setPurchaseDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
-                        <FormLabel>Price Purchased</FormLabel>
+                        <FormLabel>
+                            Price Purchased
+                            <HelpTooltip dataTip="If your car is a loaner, you can put the total amount paid/to be paid here." />
+                        </FormLabel>
 
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder="0.00" onChange={v => dispatch(setPurchasePrice(v.target.value))} />
