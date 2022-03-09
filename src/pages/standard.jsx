@@ -63,7 +63,7 @@ const DownloadButton = styled.button`
     border: 0;
     border-radius: 0px;
     cursor: pointer;
-    background: #ba68c8;
+    background: #9c44ac;
     font-size: 16px;
 
     margin-top: 20px;
@@ -82,7 +82,7 @@ function StandardPage() {
 
   return (
     <Wrapper>
-      <h2 style={{ color: "#ba68c8" }}>Automotive Utilization Calculator</h2>
+      <h2 style={{ color: "#9c44ac" }}>Automotive Utilization Calculator</h2>
       <p style={{ margin: "5px 0" }}>Calculate expenses of your car based on its purchase price and fuel costs.</p>
 
       <Body>

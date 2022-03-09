@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
 //Layout
 export const Wrapper = styled.div`
@@ -33,11 +34,17 @@ export const FormGroup = styled.div`
 `;
 
 export const FormField = styled.div`
+    flex: 1 1 auto;
     width: 100%;
+    min-width: 90px;
 
     &.label-only{
         display: flex;
         align-items: center;
+    }
+
+    &.xs{
+        max-width: 170px;
     }
 `;
 
@@ -71,7 +78,7 @@ export const FormLabel = styled.label`
     font-weight: 500;
     vertical-align: middle;
 
-    display: inline-block;
+    display: flex;
     margin-bottom: 5px;
 `;
 
@@ -169,13 +176,13 @@ export const FormHR = styled.div`
     margin: 20px 0px;
 `
 
-const FormAddEntryBtn = styled.button`
+export const FormAddEntry = styled.button`
     height: 30px;
     width: 40px;
     border: 0;
     border-radius: 5px;
     cursor: pointer;
-    background: #ba68c8;
+    background: #9c44ac;
 
     display: flex;
     align-items: center;
@@ -187,9 +194,3 @@ const FormAddEntryBtn = styled.button`
         width: 30px;
     }
 `
-
-export const FormAddEntry = (props) => {
-    return (
-        <FormAddEntryBtn {...props}>+</FormAddEntryBtn>
-    )
-}

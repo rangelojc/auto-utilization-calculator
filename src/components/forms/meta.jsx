@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import moment from "moment"
 
 import { Form, FormField, FormRow, FormInput, FormLabel, FormHR, FormUnit } from "../components";
-
 import { setYear, setMake, setModel, setPurchaseOdo, setPurchaseDate, setCurrentOdo, setPurchasePrice, setCurrentDate, setMilesTraveled } from '../../store/metaReducer.js'
+import HelpTooltip from "../help-tooltip"
 
 const FormWrapper = styled.div`
 `
@@ -62,11 +62,17 @@ function MetaForm() {
                 <h4>Current Information</h4>
                 <FormRow>
                     <FormField className="form-field">
-                        <FormLabel>Current Date of Ownership</FormLabel>
+                        <FormLabel>
+                            Current Date of Ownership
+                            <HelpTooltip dataTip="If you no longer own the car you can modify this date to the last date of ownership." />
+                        </FormLabel>
                         <FormInput type="date" value={currentDate || moment().format("YYYY-MM-DD")} onChange={v => dispatch(setCurrentDate(v.target.value))} />
                     </FormField>
                     <FormField className="form-field">
-                        <FormLabel>Distance traveled since purchase</FormLabel>
+                        <FormLabel className="with-help">
+                            Distance traveled since purchase
+                            <HelpTooltip dataTip="Your current odometer reading minus the reading when you purchased the car. <br> If the car is brand new then just put whatever is in your car's odometer." />
+                        </FormLabel>
                         <FormField className="form-field pos-rel">
                             <FormInput type="number" placeholder={0} onChange={v => dispatch(setMilesTraveled(v.target.value * 1))} />
                             <FormUnit>{distanceUnit}</FormUnit>

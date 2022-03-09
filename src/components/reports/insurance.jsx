@@ -44,12 +44,12 @@ function ServiceReport() {
         const yearlyDiff = b.diff(a, 'years', true);
         const monthlyDiff = b.diff(a, 'months');
 
-        if (!isNaN(yearlyDiff) && insuranceLegalExpenses) {
+        if (!isNaN(yearlyDiff) && insuranceLegalExpenses !== null) {
             const output = insuranceLegalExpenses / yearlyDiff;
             if (!isNaN(output)) setYearlyCost(output.toFixed(2));
         }
 
-        if (!isNaN(monthlyDiff) && insuranceLegalExpenses) {
+        if (!isNaN(monthlyDiff) && insuranceLegalExpenses !== null) {
             const output = insuranceLegalExpenses / monthlyDiff;
             if (!isNaN(output)) setMonthlyCost(output.toFixed(2));
         }
