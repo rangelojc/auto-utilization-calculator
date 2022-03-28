@@ -37,7 +37,7 @@ export default () => {
                 handleDiameter={20}
                 height={20}
                 width={50}
-                onChange={() => { dispatch(setDarkMode(!darkMode)) }}
+                onChange={() => { dispatch(setDarkMode(!darkMode)); }}
                 checked={darkMode} />
         </DarkModeSwitch>
     )

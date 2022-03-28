@@ -1,15 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+
+const DARK_MODE_KEY = "auc-darkMode"
 
 //create initial state before creating store slice
 const urlParams = window.location.search.slice(1)
     .split('&')
     .map(p => p.split('='))
-    .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});;
+    .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
 
 const initialState = {
     currency: "₱",
     distanceUnit: "km",
     fuelUnit: "L",
+    darkMode: localStorage[DARK_MODE_KEY] === "true" ? true : false
 };
 
 switch (urlParams.currency) {
@@ -38,7 +41,6 @@ export const slice = createSlice({
         advanced: urlParams.advanced === "true",
         _currencyParam: urlParams.currency || "php",
         _unitParam: urlParams.unit || "metric",
-        darkMode: false,
     },
     reducers: {
         setDistanceUnit: (state, { payload }) => {
@@ -49,6 +51,7 @@ export const slice = createSlice({
         },
         setDarkMode: (state, { payload }) => {
             state.darkMode = payload
+            localStorage[DARK_MODE_KEY] = payload;
         },
     }
 })
