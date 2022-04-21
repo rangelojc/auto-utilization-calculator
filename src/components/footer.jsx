@@ -23,6 +23,7 @@ const Author = styled.div`
     margin-top: 50px;
     text-align: center;
     font-size: 0.9em;
+    cursor: pointer;
 
     letter-spacing: 1px;
     font-weight: 500; 
