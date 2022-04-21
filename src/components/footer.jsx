@@ -56,7 +56,7 @@ function Footer() {
                     <a href={`?advanced=${isAdvanced}&currency=${_currencyParam}&unit=imperial`}>Imperial</a>&nbsp;
                 </div>
             </Links>
-            <Author>©️  {new Date().getFullYear()} │ rangelo.dev</Author>
+            <Author onClick={() => window.location.href = "https://rangelo.dev"}>©️  {new Date().getFullYear()} │ rangelo.dev</Author>
         </Foot>
     );
 }
